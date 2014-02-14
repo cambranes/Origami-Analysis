@@ -145,6 +145,37 @@ public class FileReport {
 		    		" Testing Activity: " + testingActivity;
 	}
 	
+	public String getActivityStatsByType(TimeStampVector tsv){
+	    int newOpenActivity = 0;
+	    int addActivity = 0;
+	    int deleteActivity = 0;
+	    int editActivity = 0;
+	    int testingActivity = 0;
+	    
+	    for(int index = 0; index < tsv.size(); index++){
+		 if(tsv.getTimeStamp(index).getAction().compareTo("ADD") == 0){
+		     addActivity++;
+		 }
+		 else if(tsv.getTimeStamp(index).getAction().compareTo("DELETE") == 0){
+		     deleteActivity++;
+		 }
+		 else if ( tsv.getTimeStamp(index).getAction().compareTo("EDIT") == 0){
+		     editActivity++;
+		 }
+		 else if(tsv.getTimeStamp(index).getAction().compareTo("NEW") == 0 ||
+			 tsv.getTimeStamp(index).getAction().compareTo("OPEN") == 0){
+		     newOpenActivity++;
+		 } 	
+		 else if (tsv.getTimeStamp(index).getAction().compareTo("COMPIL") == 0 ||
+			 tsv.getTimeStamp(index).getAction().compareTo("TEST") == 0 ||
+			 tsv.getTimeStamp(index).getAction().compareTo("STOP") == 0){
+		     		testingActivity++;
+		 	}
+		 }
+	    return "NewOpen\tAdd\tUpdate\tDelete\tTesting\n" +
+		 	newOpenActivity +"\t" + addActivity +"\t" + editActivity +"\t" + deleteActivity +"\t" + testingActivity; 
+	}
+	
 	@SuppressWarnings("deprecation")
 	public String reportExcel(TimeStampVector tsv){
 		String string = "";

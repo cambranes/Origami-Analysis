@@ -66,7 +66,7 @@ public class OpenFileView {
 	    //System.out.println (tsv.toString());
 	    System.out.println (fr.getActivityStats(report));
 	    System.out.println ("Activity: " + report.size());
-	    System.out.println ("Solving time: " + fr.getSolvingTime(tsv));
+	    //System.out.println ("Solving time: " + fr.getSolvingTime(tsv));
 	    System.out.println ("Solving time: " + fr.getSolvingTime(report));
 	    
 	    
@@ -75,8 +75,10 @@ public class OpenFileView {
                 		fr.getInterrumptionTime() + "\t"+
                 		fr.getInterrumptions() + "\t"+
                 		report.size());
+	    
+	    System.out.println(fr.getActivityStatsByType(report));
 	    //System.out.println (fr.getSolvingTime(tsv));
-	    System.out.println (fr.reportExcel(tsv));
+	    //System.out.println (fr.reportExcel(tsv));
 	    //System.out.println (fr.reportExcel(report));
 	    
 	    //System.out.println (report.hashCode() + " "+ tsv.hashCode());
